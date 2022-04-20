@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
 locals {
   desired_capacity = max(var.desired_capacity, var.min_size)
 
@@ -50,10 +41,9 @@ locals {
 
 module "autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
-  version = "~> 4.6"
+  version = "6.3.0"
 
-  create_lt                = true
-  desired_capacity         = local.desired_capacity
+  create_launch_template   = true
   health_check_type        = "EC2"
   iam_instance_profile_arn = var.iam_instance_profile
   image_id                 = var.image_id
@@ -68,16 +58,16 @@ module "autoscaling" {
 
   instance_type          = var.instance_type
   key_name               = var.key_name
+  desired_capacity       = local.desired_capacity
   max_size               = var.max_size
   min_size               = var.min_size
   name                   = var.auto_scaling_group_name
   security_groups        = var.security_groups
-  tags_as_map            = var.tags
+  tags                   = var.tags
   target_group_arns      = var.target_group_arns
   update_default_version = true
-  use_lt                 = true
 
-  user_data_base64 = base64encode(<<EOF
+  user_data = base64encode(<<EOF
 ## template: jinja
 #cloud-config
 ${yamlencode(local.user_data)}

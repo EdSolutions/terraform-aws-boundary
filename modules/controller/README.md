@@ -1,4 +1,4 @@
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -38,5 +38,4 @@
 | ip\_addresses | One or more private IPv4 addresses associated with the controllers |
 | kms\_key\_id | The unique identifier for the worker-auth key |
 | security\_group\_id | The ID of the controller security group |
-
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

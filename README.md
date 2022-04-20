@@ -81,7 +81,7 @@ As mentioned in the beginning of the README, this module is relatively new and m
 
 As always, thanks for using this module!
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -123,7 +123,7 @@ As always, thanks for using this module!
 | dns\_name | The public DNS name of the controller load balancer |
 | s3command | The S3 cp command used to display the contents of the cloud-init-output.log |
 
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
 
 ## License
 

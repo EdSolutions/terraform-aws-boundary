@@ -1,8 +1,3 @@
-output "bastion_security_group" {
-  description = "The ID of the bastion security group"
-  value       = one(aws_security_group.bastion[*].id)
-}
-
 output "dns_name" {
   description = "The public DNS name of the load balancer"
   value       = module.alb.lb_dns_name

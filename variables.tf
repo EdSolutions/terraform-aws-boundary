@@ -1,12 +1,6 @@
 variable "boundary_release" {
-  default     = "0.1.0"
+  default     = "0.7.6"
   description = "The version of Boundary to install"
-  type        = string
-}
-
-variable "cidr_block" {
-  default     = "10.0.0.0/16"
-  description = "The IPv4 network range for the VPC, in CIDR notation. For example, 10.0.0.0/16."
   type        = string
 }
 
@@ -34,12 +28,6 @@ variable "controller_min_size" {
   type        = number
 }
 
-variable "key_name" {
-  default     = ""
-  description = "The name of the key pair"
-  type        = string
-}
-
 variable "private_subnets" {
   default     = []
   description = "List of private subnets"
@@ -59,7 +47,6 @@ variable "tags" {
 }
 
 variable "vpc_id" {
-  default     = ""
   description = "The ID of the VPC"
   type        = string
 }
@@ -86,4 +73,20 @@ variable "worker_min_size" {
   default     = 3
   description = "The minimum size of the worker group"
   type        = number
+}
+
+variable "db_instance_subnet_group_name" {
+  description = "Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC"
+  type        = string
+}
+
+variable "public_route53_zone_id" {
+  description = "The public DNS zone to create a record and ACM cert validations"
+  type        = string
+}
+
+variable "key_name" {
+  description = "The name of the key pair"
+  type        = string
+  default     = null
 }

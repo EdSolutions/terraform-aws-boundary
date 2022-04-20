@@ -1,6 +1,6 @@
-output "dns_name" {
-  description = "The public DNS name of the controller load balancer"
-  value       = module.controllers.dns_name
+output "boundary_url" {
+  description = "The public URL the controller"
+  value       = "https://boundary.${data.aws_route53_zone.public.name}"
 }
 
 output "s3command" {
@@ -9,6 +9,6 @@ output "s3command" {
   value = format(
     "aws s3 cp s3://%s/%s -",
     aws_s3_bucket.boundary.id,
-    data.aws_s3_bucket_objects.cloudinit.keys[0]
+    data.aws_s3_objects.cloudinit.keys[0]
   )
 }

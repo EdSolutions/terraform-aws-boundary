@@ -58,8 +58,7 @@ module "autoscaling" {
 
   block_device_mappings = [
     {
-      # Root volume
-      device_name = "/dev/xvda"
+      device_name = "/dev/sda1"
       no_device   = 0
       ebs = {
         delete_on_termination = true

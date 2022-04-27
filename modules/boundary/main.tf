@@ -56,6 +56,20 @@ module "autoscaling" {
     strategy = "Rolling"
   }
 
+  block_device_mappings = [
+    {
+      # Root volume
+      device_name = "/dev/xvda"
+      no_device   = 0
+      ebs = {
+        delete_on_termination = true
+        encrypted             = true
+        volume_size           = 100
+        volume_type           = "gp2"
+      }
+    }
+  ]
+
   instance_type          = var.instance_type
   key_name               = var.key_name
   desired_capacity       = local.desired_capacity
